@@ -24,7 +24,6 @@ def player_win?(player_selection)
 end
 
 get "/" do
-
   if !session[:visit_count].nil?
     session.clear
   end
@@ -58,8 +57,10 @@ post "/results" do
     @winner = "Computer wins best 2 of 3"
   end
 
-  # ask about how to reset the scores once score of 2 is reached
-
-
   erb :index
+end
+
+get '/reset' do
+  session.clear
+  redirect '/'
 end
